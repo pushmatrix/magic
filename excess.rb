@@ -3,9 +3,9 @@ File.open(ARGV[0] || "own.coll") do |file|
     count = line.split(" ")[0].to_i
     if count > 4
       excess = count - 4
-      card = line.split("[")[0].split(" ")[1..-1].join(" ")
-      unless %w(Forest Island Plains Swamp Mountain).include? card
-        puts "#{excess}x #{card}"
+      card = line.split(" ")[1..-1].join(" ")
+      unless card.match(/Forest|Plains|Mountain|Island|Swamp/)
+        puts "#{excess} #{card}"
       end
     end
   end
