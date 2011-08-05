@@ -1,4 +1,4 @@
-File.open("own.coll") do |file|
+File.open(ARGV[0] || "own.coll") do |file|
   file.each_line do |line|
     count = line.split(" ")[0].to_i
     if count > 4
