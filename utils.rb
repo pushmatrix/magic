@@ -44,11 +44,9 @@ class Collection < Hash
 end
 
 coll1 = Collection::import(ARGV[0] || "own.coll")
-
-if ARGV.size < 1
+if ARGV.size <= 1
   puts coll1.excess
 else
-  coll1 = Collection::import("own.coll")
-  coll2 = Collection::import("test.coll")
+  coll2 = Collection::import(ARGV[1])
   puts coll1.giveaways(coll2)
 end
