@@ -15,7 +15,14 @@ class Collection < Hash
   end
 
   def excess
-    Collection.new.update self.select { |name, count| count > EXCESS_CARD_COUNT }
+    excess = Collection.new
+    self.each do |name, count| 
+      if count > EXCESS_CARD_COUNT
+        excess[name] = count - EXCESS_CARD_COUNT
+      end
+    end
+    
+    excess
   end
 
   def to_s
